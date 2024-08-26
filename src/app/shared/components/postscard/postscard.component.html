@@ -1,0 +1,18 @@
+
+<div *ngIf="postObj; else nopostsObj">
+    <mat-card class="mb-4 card">
+        <mat-card-title>
+            {{postObj.title}}
+        </mat-card-title>
+        <mat-card-content>
+            {{postObj.content}}
+        </mat-card-content>
+        <button mat-stroked-button color="accent" class="btn-block" [routerLink]="postObj.id">Read More</button>
+    </mat-card>
+</div>
+
+<ng-template #nopostsObj>
+    <p class="alert alert-warning">
+        No Posts Data Available
+    </p>
+</ng-template>

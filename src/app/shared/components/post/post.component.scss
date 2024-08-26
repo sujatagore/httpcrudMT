@@ -1,0 +1,13 @@
+
+.content{
+    overflow: auto;
+    height: 60px;
+}
+
+::-webkit-scrollbar{
+    width: 5px;
+}
+
+.postsCard{
+    max-width: 500px;
+}

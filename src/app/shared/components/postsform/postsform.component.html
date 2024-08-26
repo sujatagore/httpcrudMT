@@ -1,0 +1,43 @@
+
+<div class="row">
+    <div class="col-md-8 offset-md-2">
+        <mat-card>
+            <mat-card-header>
+                <mat-card-title>
+                    {{isinEditMode ? 'Update Post' : 'Add Post'}}
+                </mat-card-title>
+            </mat-card-header>
+            <mat-card-content>
+                <form [formGroup]="PostsForm" (ngSubmit)="onPostsAdd()">
+                    <mat-form-field class="full-width" appearance="legacy">
+                        <mat-label>Posts Title</mat-label>
+                        <input matInput type="text" formControlName="title">
+                        <mat-error *ngIf="pc['title'].invalid && pc['title'].touched && pc['title'].hasError('required')">
+                            Posts Title is <strong>Required</strong>
+                        </mat-error>
+                    </mat-form-field>
+
+                    <mat-form-field class="full-width" appearance="legacy">
+                        <mat-label>Posts Content</mat-label>
+                        <textarea matInput formControlName="content" rows="4"></textarea>
+                        <mat-error *ngIf="pc['content'].invalid && pc['content'].touched && pc['content'].hasError('required')">
+                            Posts Content is <strong>Required</strong>
+                        </mat-error>
+                    </mat-form-field>
+
+                    <mat-form-field class="full-width" appearance="legacy">
+                        <mat-label>Posts UserId</mat-label>
+                        <mat-select formControlName="userId">
+                            <mat-option *ngFor="let n of [1,2,3,4,5,6,7,8,9,10]" [value]="n">{{n}}</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+
+                    <button type="submit" mat-raised-button color="primary" *ngIf="!isinEditMode" class="btn-block">Add Posts</button>
+
+                    <button type="button" mat-raised-button color="primary" *ngIf="isinEditMode" class="btn-block"
+                     (click)="onPostsUpdate()">Update Posts</button>
+                </form>
+            </mat-card-content>
+        </mat-card>
+    </div>
+</div>
